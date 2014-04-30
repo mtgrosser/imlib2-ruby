@@ -1,10 +1,5 @@
 require 'mkmf'
 
-imlib2_config = with_config("imlib2-config", "imlib2-config")
-
-$CFLAGS << ' -DX_DISPLAY_MISSING ' << `#{imlib2_config} --cflags`.chomp
-$LDFLAGS << ' ' << `#{imlib2_config} --libs`.chomp
-
 if have_library("Imlib2", "imlib_create_image")
   # test for faulty versions of imlib2
   ver = `imlib2-config --version`.chomp.split(/\./)
